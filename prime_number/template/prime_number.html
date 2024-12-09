@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Number Checker</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        form {
+            margin: 20px auto;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            width: 200px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enter Your Prime Number</h1>
+    <form method="POST" action="/">
+        <input type="text" name="number" placeholder="Enter a number" required>
+        <button type="submit">Submit</button>
+    </form>
+    {% if result %}
+    <div class="result">{{ result }}</div>
+    {% endif %}
+</body>
+</html>
