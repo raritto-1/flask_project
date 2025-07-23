@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <h2>Welcome, {{ current_user.username }}!</h2>
+        <p>This is your personal diary.</p>
+        
+        <div class="mb-4">
+            <a href="#" class="btn btn-success">Add New Entry</a>
+        </div>
+        
+        {% if diaries %}
+            {% for diary in diaries %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ diary.title }}</h5>
+                        <p class="card-text">{{ diary.content }}</p>
+                        <small class="text-muted">Posted on {{ diary.date_posted.strftime('%Y-%m-%d') }}</small>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="alert alert-info">
+                You don't have any diary entries yet. Create your first one!
+            </div>
+        {% endif %}
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5>Your Profile</h5>
+            </div>
+            <div class="card-body text-center">
+                {% if current_user.image_file != 'default.jpg' %}
+                    <img src="{{ current_user.image_file }}" class="rounded-circle mb-3" width="150" height="150">
+                {% else %}
+                    <img src="{{ url_for('static', filename='images/default.jpg') }}" class="rounded-circle mb-3" width="150" height="150">
+                {% endif %}
+                <h5>{{ current_user.username }}</h5>
+                <p class="text-muted">{{ current_user.email }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
